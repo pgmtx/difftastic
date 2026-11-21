@@ -323,6 +323,20 @@ fn build_config(language: guess::Language) -> TreeSitterConfig {
                 sub_languages: vec![],
             }
         }
+        D => {
+            let language_fn = tree_sitter_d::LANGUAGE;
+            let language = tree_sitter::Language::new(language_fn);
+
+            TreeSitterConfig {
+                language: language.clone(),
+                atom_nodes: ["string_literal"].into_iter().collect(),
+                delimiter_tokens: vec![("{", "}"), ("[", "]"), ("(", ")")],
+                ignore_trailing_tokens: vec![],
+                highlight_query: ts::Query::new(&language, include_str!("../../vendored_parsers/highlights/d.scm"))
+                    .unwrap(),
+                sub_languages: vec![],
+            }
+        }
         Dart => {
             let language_fn = tree_sitter_dart_orchard::LANGUAGE;
             let language = tree_sitter::Language::new(language_fn);

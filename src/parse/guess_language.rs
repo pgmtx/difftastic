@@ -30,6 +30,7 @@ pub(crate) enum Language {
     CPlusPlus,
     CSharp,
     Css,
+    D,
     Dart,
     DeviceTree,
     Dockerfile,
@@ -128,6 +129,7 @@ pub(crate) fn language_name(language: Language) -> &'static str {
         CPlusPlus => "C++",
         CSharp => "C#",
         Css => "CSS",
+        D => "D",
         Dart => "Dart",
         DeviceTree => "Device Tree",
         Dockerfile => "Dockerfile",
@@ -257,6 +259,7 @@ pub(crate) fn language_globs(language: Language) -> Vec<glob::Pattern> {
         ],
         CSharp => &["*.cs"],
         Css => &["*.css"],
+        D => &["*.d", "*.di", "*.dd"],
         Dart => &["*.dart"],
         DeviceTree => &["*.dts", "*.dtsi", "*.dtso", "*.its"],
         Dockerfile => &[
